@@ -6,10 +6,12 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 
 
-    @RunWith(Cucumber.class)
+@RunWith(Cucumber.class)
     @CucumberOptions(
             features = "src/test/resources/Features",
             glue = {"StepDefinitions"},
@@ -21,10 +23,9 @@ import org.junit.runner.RunWith;
 
 
     public class TestRunner {
+   @AfterClass
+    public  static void tearDown(){
+       Driver.closeDriver();
+   }
 
-    @AfterClass
-        public static void tearDown() throws InterruptedException {
-        Thread.sleep(3000);
-    Driver.closeDriver();
     }
-}
